@@ -26,6 +26,16 @@ export const App = () => {
   const onChangeFilter = evt => {
     setFilter(evt.target.value);
   };
+  const onChangeComplited = id => {
+    setData(
+      data.map(item => {
+        if (item.id === id) {
+          item.completed = !item.completed;
+        }
+        return item;
+      })
+    );
+  };
 
   return (
     <>
@@ -34,7 +44,11 @@ export const App = () => {
         <h1>Todo App</h1>
         <div>
           <AddTodo onClick={onClickAddTodo} />
-          <MyTodos data={dataFilter} onChange={onChangeFilter} />
+          <MyTodos
+            data={dataFilter}
+            onChange={onChangeFilter}
+            onTakeId={onChangeComplited}
+          />
         </div>
       </div>
     </>

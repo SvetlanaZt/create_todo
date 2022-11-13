@@ -2,9 +2,8 @@ import FilterName from '../FilterName/FilterName';
 import ComplitedMyTodo from '../ComplitedMyTodo/ComplitedMyTodo';
 import { useState, useEffect } from 'react';
 
-export default function MyTodos({ data, onChange }) {
+export default function MyTodos({ data, onChange, onTakeId }) {
   const [dataFilter, setDataFilter] = useState(data);
-  // console.log(data);
 
   useEffect(() => {
     setDataFilter(data);
@@ -27,7 +26,13 @@ export default function MyTodos({ data, onChange }) {
       <ComplitedMyTodo onClick={onClickComplited} />
 
       <ul>
-        {true && dataFilter.map(item => <li key={item.id}>{item.title}</li>)}
+        {true &&
+          dataFilter.map(item => (
+            <li key={item.id}>
+              {item.title}
+              <input type="checkbox" onChange={() => onTakeId(item.id)} />
+            </li>
+          ))}
       </ul>
     </div>
   );
