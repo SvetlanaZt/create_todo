@@ -1,10 +1,14 @@
 import FilterName from '../FilterName/FilterName';
 import ComplitedMyTodo from '../ComplitedMyTodo/ComplitedMyTodo';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
-export default function MyTodos({ onChange, data }) {
+export default function MyTodos({ data, onChange }) {
   const [dataFilter, setDataFilter] = useState(data);
-  console.log(dataFilter);
+  // console.log(data);
+
+  useEffect(() => {
+    setDataFilter(data);
+  }, [data]);
 
   const onClickComplited = status => {
     if (status === 'all') {
@@ -23,8 +27,7 @@ export default function MyTodos({ onChange, data }) {
       <ComplitedMyTodo onClick={onClickComplited} />
 
       <ul>
-        {dataFilter &&
-          dataFilter.map(item => <li key={item.id}>{item.title}</li>)}
+        {true && dataFilter.map(item => <li key={item.id}>{item.title}</li>)}
       </ul>
     </div>
   );

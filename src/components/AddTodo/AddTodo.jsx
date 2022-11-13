@@ -1,9 +1,28 @@
-export default function AddTodo({ onChange }) {
+import { useState } from 'react';
+
+export default function AddTodo({ onClick }) {
+  const [contacts, setContacts] = useState('');
+
+  const addTodo = e => {
+    e.preventDefault();
+    onClick(contacts.trim());
+    reset();
+  };
+
+  const reset = () => {
+    setContacts('');
+  };
+
   return (
     <div>
-      <h2>Add todo</h2>
-      <form>
-        <input type="text" onChange={onChange} placeholder="Todo name"></input>
+      <form onSubmit={addTodo}>
+        <input
+          onChange={e => setContacts(e.target.value)}
+          type="text"
+          name="name"
+          value={contacts}
+          placeholder="Todo name"
+        />
         <button type="submit">+</button>
       </form>
     </div>
