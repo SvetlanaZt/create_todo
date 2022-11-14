@@ -1,7 +1,12 @@
+import { StyledInput } from './FilterName.styled';
 export default function FilterName({ onChange }) {
   return (
     <>
-      <input type="text" onChange={onChange} placeholder="Search"></input>
+      <StyledInput
+        type="text"
+        onChange={onChange}
+        placeholder="Search"
+      ></StyledInput>
     </>
   );
 }

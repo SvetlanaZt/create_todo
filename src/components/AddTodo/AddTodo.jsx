@@ -1,4 +1,11 @@
 import { useState } from 'react';
+import {
+  StyledDiv,
+  StyledH2,
+  StyledForm,
+  StyledInput,
+  StyledButton,
+} from './AddTodo.styled';
 
 export default function AddTodo({ onClick }) {
   const [contacts, setContacts] = useState('');
@@ -14,17 +21,18 @@ export default function AddTodo({ onClick }) {
   };
 
   return (
-    <div>
-      <form onSubmit={addTodo}>
-        <input
+    <StyledDiv>
+      <StyledH2>Add todo</StyledH2>
+      <StyledForm onSubmit={addTodo}>
+        <StyledInput
           onChange={e => setContacts(e.target.value)}
           type="text"
           name="name"
           value={contacts}
           placeholder="Todo name"
         />
-        <button type="submit">+</button>
-      </form>
-    </div>
+        <StyledButton type="submit">+</StyledButton>
+      </StyledForm>
+    </StyledDiv>
   );
 }

@@ -3,6 +3,12 @@ import AddTodo from './AddTodo/AddTodo';
 import MyTodos from './MyTodos/MyTodos';
 import { fetchData } from './API/API';
 import { nanoid } from 'nanoid';
+import {
+  StyledDiv,
+  StyledDivContainer,
+  StyledH1,
+  StyledDivWraper,
+} from './App.styled';
 
 export const App = () => {
   const [data, setData] = useState([]);
@@ -29,14 +35,15 @@ export const App = () => {
 
   return (
     <>
-      <div></div>
-      <div>
-        <h1>Todo App</h1>
-        <div>
+      <StyledDiv></StyledDiv>
+      <StyledDivContainer>
+        <StyledH1>Todo App</StyledH1>
+        <StyledDivWraper>
           <AddTodo onClick={onClickAddTodo} />
           <MyTodos data={dataFilter} onChange={onChangeFilter} />
-        </div>
-      </div>
+        </StyledDivWraper>
+        <div></div>
+      </StyledDivContainer>
     </>
   );
 };

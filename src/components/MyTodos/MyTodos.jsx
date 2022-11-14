@@ -1,6 +1,13 @@
 import FilterName from '../FilterName/FilterName';
 import ComplitedMyTodo from '../ComplitedMyTodo/ComplitedMyTodo';
 import { useState, useEffect } from 'react';
+import {
+  StyledDiv,
+  Styledh2,
+  StyledUl,
+  StyledLi,
+  StyledDivWraper,
+} from './MyTodos.styled';
 
 export default function MyTodos({ data, onChange }) {
   const [dataFilter, setDataFilter] = useState(data);
@@ -20,7 +27,7 @@ export default function MyTodos({ data, onChange }) {
   };
   const onChangeComplited = id => {
     setDataFilter(
-      data.map(item => {
+      dataFilter.map(item => {
         if (item.id === id) {
           item.completed = !item.completed;
         }
@@ -30,23 +37,25 @@ export default function MyTodos({ data, onChange }) {
   };
 
   return (
-    <div>
-      <h2>My Todos</h2>
-      <FilterName onChange={onChange} />
+    <StyledDiv>
+      <StyledDivWraper>
+        <Styledh2>My Todos</Styledh2>
+        <FilterName onChange={onChange} />
+      </StyledDivWraper>
       <ComplitedMyTodo onClick={onClickComplited} />
 
-      <ul>
+      <StyledUl>
         {true &&
           dataFilter.map(item => (
-            <li key={item.id}>
+            <StyledLi key={item.id}>
               {item.title}
               <input
                 type="checkbox"
                 onChange={() => onChangeComplited(item.id)}
               />
-            </li>
+            </StyledLi>
           ))}
-      </ul>
-    </div>
+      </StyledUl>
+    </StyledDiv>
   );
 }

@@ -1,9 +1,10 @@
+import { StyledDiv, StyledP } from './ComplitedMyTodo.styled';
 export default function ComplitedMyTodo({ onClick }) {
   return (
-    <div>
-      <p onClick={() => onClick('all')}>Все /</p>
-      <p onClick={() => onClick('complited')}>Выполненные /</p>
-      <p onClick={() => onClick('notComplited')}>Не выполненные</p>
-    </div>
+    <StyledDiv>
+      <StyledP onClick={() => onClick('all')}>Все / </StyledP>
+      <StyledP onClick={() => onClick('complited')}>Выполненные / </StyledP>
+      <StyledP onClick={() => onClick('notComplited')}>Не выполненные </StyledP>
+    </StyledDiv>
   );
 }
