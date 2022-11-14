@@ -7,6 +7,8 @@ import {
   StyledUl,
   StyledLi,
   StyledDivWraper,
+  StyledDivInput,
+  StyledInput,
 } from './MyTodos.styled';
 
 export default function MyTodos({ data, onChange }) {
@@ -49,10 +51,12 @@ export default function MyTodos({ data, onChange }) {
           dataFilter.map(item => (
             <StyledLi key={item.id}>
               {item.title}
-              <input
-                type="checkbox"
-                onChange={() => onChangeComplited(item.id)}
-              />
+              <StyledDivInput itemBoole={item.completed}>
+                <StyledInput
+                  type="checkbox"
+                  onChange={() => onChangeComplited(item.id)}
+                />
+              </StyledDivInput>
             </StyledLi>
           ))}
       </StyledUl>

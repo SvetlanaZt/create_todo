@@ -7,7 +7,7 @@ export const StyledDiv = styled.div`
   margin-bottom: 6px;
   @media (min-width: 768px) {
     height: 157px;
-    width: 100%;
+    width: 85%;
     margin-right: 33px;
   }
 `;
