@@ -26,13 +26,23 @@ export const App = () => {
     const newName = { id: nanoid(), title: name, completed: false };
     setData([newName, ...data]);
   };
+  const onChangeComplited = id => {
+    setData(
+      data.map(item => {
+        if (item.id === id) {
+          item.completed = !item.completed;
+        }
+        return item;
+      })
+      // .sort((a, b) => a.completed - b.completed)
+    );
+  };
   const dataFilter = data.filter(item =>
     item.title.toLowerCase().includes(filter.toLowerCase())
   );
   const onChangeFilter = evt => {
     setFilter(evt.target.value);
   };
-
   return (
     <>
       <StyledDiv></StyledDiv>
@@ -40,7 +50,11 @@ export const App = () => {
         <StyledH1>Todo App</StyledH1>
         <StyledDivWraper>
           <AddTodo onClick={onClickAddTodo} />
-          <MyTodos data={dataFilter} onChange={onChangeFilter} />
+          <MyTodos
+            data={dataFilter}
+            onChange={onChangeFilter}
+            onChangeComplited={onChangeComplited}
+          />
         </StyledDivWraper>
         <div></div>
       </StyledDivContainer>

@@ -11,7 +11,7 @@ import {
   StyledInput,
 } from './MyTodos.styled';
 
-export default function MyTodos({ data, onChange }) {
+export default function MyTodos({ data, onChange, onChangeComplited }) {
   const [dataFilter, setDataFilter] = useState(data);
 
   useEffect(() => {
@@ -26,16 +26,6 @@ export default function MyTodos({ data, onChange }) {
     } else if (status === 'notComplited') {
       setDataFilter(data.filter(item => !item.completed));
     }
-  };
-  const onChangeComplited = id => {
-    setDataFilter(
-      dataFilter.map(item => {
-        if (item.id === id) {
-          item.completed = !item.completed;
-        }
-        return item;
-      })
-    );
   };
 
   return (
